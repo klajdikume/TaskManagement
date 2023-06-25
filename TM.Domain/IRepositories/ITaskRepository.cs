@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TM.Domain.Entities;
+using Task = TM.Domain.Entities.Task;
 
 namespace TM.Domain.Repositories
 {
-    public interface IProjectRepository
+    public interface ITaskRepository
     {
-        Task<Project?> GetByIdAsync(ProjectId id);
+        Task<Domain.Entities.Task?> GetByIdAsync(TaskId id);
+        public void Update(Task task);
     }
 }

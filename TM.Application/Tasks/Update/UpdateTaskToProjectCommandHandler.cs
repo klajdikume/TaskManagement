@@ -8,21 +8,27 @@ using System.Threading.Tasks;
 using TM.Application.Data;
 using TM.Domain.Entities;
 using TM.Domain.Exceptions;
+using TM.Domain.Repositories;
 
 namespace TM.Application.Tasks.Update
 {
     internal class UpdateTaskToProjectCommandHandler : IRequestHandler<UpdateTaskToProjectCommand, TaskId>
     {
+        private readonly ITaskRepository _taskRepo;
         private readonly IApplicationDbContext _dbContext;
 
-        public UpdateTaskToProjectCommandHandler(IApplicationDbContext dbContext)
+        public UpdateTaskToProjectCommandHandler(
+            IApplicationDbContext dbContext,
+            ITaskRepository taskRepository
+            )
         {
             _dbContext = dbContext;
+            _taskRepo = taskRepository;
         }
 
         public async Task<TaskId> Handle(UpdateTaskToProjectCommand request, CancellationToken cancellationToken)
         {
-            var task = await _dbContext.Tasks.FindAsync(request.TaskId);
+            var task = await _taskRepo.GetByIdAsync(request.TaskId);
 
             if (task == null)
             {
@@ -31,7 +37,7 @@ namespace TM.Application.Tasks.Update
 
             task.SetToProject(request.ProjectId);
 
-            _dbContext.Tasks.Update(task);
+            _taskRepo.Update(task);
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return task.TaskId;

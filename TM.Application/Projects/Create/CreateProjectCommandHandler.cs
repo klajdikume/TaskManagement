@@ -17,6 +17,7 @@ namespace TM.Application.Projects.Create
         {
             _context = context;
         }
+
         public async Task Handle(CreateProjectCommand request, CancellationToken cancellationToken)
         {
             Project.Create(request.name);

@@ -1,18 +1,33 @@
-﻿using System;
+﻿using Azure.Core;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TM.Application.Data;
 using TM.Domain.Entities;
 using TM.Domain.Repositories;
+using Task = TM.Domain.Entities.Task;
 
 namespace TM.Infrastructure.Repositories
 {
-    public class TaskRepository : IProjectRepository
+    public class TaskRepository : ITaskRepository
     {
-        public Task<Project?> GetByIdAsync(ProjectId id)
+        private readonly ApplicationDbContext _dbContext;
+        public TaskRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _dbContext = context;
+        }
+
+        public async Task<Domain.Entities.Task?> GetByIdAsync(TaskId id)
+        {
+            return await _dbContext.Tasks.FindAsync(id);
+        }
+
+        public void Update(Task task)
+        {
+            _dbContext.Tasks.Update(task);
         }
     }
 }
