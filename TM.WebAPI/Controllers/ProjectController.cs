@@ -4,6 +4,7 @@ using MediatR;
 
 namespace TM.WebAPI.Controllers
 {
+    [Route("api/[controller]")]
     public class ProjectController : ControllerBase
     {
         private readonly IMediator _mediator;

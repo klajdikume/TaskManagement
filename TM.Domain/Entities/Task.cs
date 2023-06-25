@@ -34,17 +34,34 @@ namespace TM.Domain.Entities
             Description = description;
         }
 
-        public Task(TaskId taskId, string title) 
+        public Task(TaskId taskId, ProjectId? projectId, string title, string? description, Status status, UserId? userId, DateTime startDate, DateTime? dueDate, Priority priority)
         {
             TaskId = taskId;
+            ProjectId = projectId;
             Title = title;
+            Description = description;
+            Status = status;
+            UserId = userId;
+            StartDate = startDate;
+            DueDate = dueDate;
+            Priority = priority;
         }
 
-        public static Task Create(string title)
+        public static Task Create(Task task)
         {
-            var task = new Task(new TaskId(Guid.NewGuid()), title);
+            var taskCreated = new Task(
+                new TaskId(Guid.NewGuid()),
+                task.ProjectId,
+                task.Title,
+                task.Description,
+                task.Status,
+                task.UserId,
+                task.StartDate,
+                task.DueDate,
+                task.Priority
+                );
 
-            return task;
+            return taskCreated;
         }
 
         public void AssignToUser(UserId userId)

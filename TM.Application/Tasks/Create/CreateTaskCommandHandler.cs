@@ -22,7 +22,7 @@ namespace TM.Application.Tasks.Create
         public async Task<TaskId> Handle(CreateTaskCommand request, CancellationToken cancellationToken)
         {
             
-            var task = Task.Create(request.Task.Title);
+            var task = Task.Create(request.Task);
 
             _dbContext.Tasks.Add(task);
 

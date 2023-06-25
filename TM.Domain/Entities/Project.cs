@@ -9,6 +9,16 @@ namespace TM.Domain.Entities
 {
     public class Project
     {
+        public Project()
+        {
+
+        }
+        public Project(ProjectId projectId)
+        {
+            Id = projectId;
+        }
+
+        
         public ProjectId Id { get; set; } 
         public string Name { get; set; }  = string.Empty;
        
