@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  taskmanagement-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: admin@passwor1
+      ACCEPT_EULA: Y
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - dbdata:/var/opt/mssql/data
+
+  taskmanagement-webapi:
+    build:
+      context: .
+      dockerfile: TM.WebAPI/Dockerfile
+    depends_on:
+      - taskmanagement-db
+    environment:
+      - DB_SERVER=GAMMA
+      - DB_PORT=1433
+      - DB_NAME=TM
+      - DB_USER=devadmin
+      - DB_PASSWORD=devadmin
+    ports:
+      - "8000:80"
+
+volumes:
+  dbdata:

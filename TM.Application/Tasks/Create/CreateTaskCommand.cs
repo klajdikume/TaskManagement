@@ -9,5 +9,5 @@ using Task = TM.Domain.Entities.Task;
 namespace TM.Application.Tasks.Create
 {
     public record CreateTaskCommand(Task Task) : IRequest<TaskId>;
-    
+    public record CreateTaskRequest(Task Task);
 }

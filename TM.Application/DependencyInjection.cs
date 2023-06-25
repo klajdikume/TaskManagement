@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using TM.Application.Projects.Validations;
 
 namespace TM.Application
 {
@@ -12,6 +13,8 @@ namespace TM.Application
                 configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
             })
             .AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
+
+            services.AddValidatorsFromAssemblyContaining<CreateProjectCommandValidator>();
 
             return services;
         }

@@ -13,11 +13,11 @@ WORKDIR /src
 COPY ["TM.WebAPI/TM.WebAPI.csproj", "TM.WebAPI/"]
 RUN dotnet restore "TM.WebAPI/TM.WebAPI.csproj"
 COPY . .
-WORKDIR "/src/TM.WebAPI"
-RUN dotnet build "TM.WebAPI.csproj" -c Release -o /app/build
+WORKDIR "/TaskManagement/TM.WebAPI"
+RUN dotnet build "/src/TM.WebAPI/TM.WebAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "TM.WebAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "/src/TM.WebAPI/TM.WebAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
