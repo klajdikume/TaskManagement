@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TM.Application.Projects.Create;
 using MediatR;
+using TM.Application.Projects.Get;
 
 namespace TM.WebAPI.Controllers
 {
@@ -14,13 +15,21 @@ namespace TM.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index([FromQuery] string name)
+        public async Task<IActionResult> Post([FromQuery] string name)
         {
             var command = new CreateProjectCommand(name);
 
             await _mediator.Send(command);
 
             return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Projects()
+        {
+            var command = new GetProjectsCommand();
+
+            return Ok(await _mediator.Send(command));
         }
     }
 }
