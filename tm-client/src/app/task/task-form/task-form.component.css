@@ -1,0 +1,26 @@
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+  
+.cancel-button {
+    margin-right: 8px;
+    color: white;
+    background-color: blue;
+    border: 1px solid blue;
+    height: 25px;
+    border-radius: 14%;
+}
+  
+.save-button {
+    color: white;
+    background-color: green;
+    height: 25px;
+    border-radius: 14%;
+}

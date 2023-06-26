@@ -1,0 +1,42 @@
+.task-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.table-task {
+    width: 70%;
+    align-self: center;
+}
+
+.task-description {
+    margin: 50px 0;
+    padding: 0 200px;
+}
+
+.description-grp {
+    display: flex;
+    justify-content:space-between;
+}
+
+.new-button {
+    margin-right: 10px;
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .new-button:hover {
+    background-color: #45a049; /* Darker green */
+  }
+  
+  .new-button:active {
+    background-color: #3e8e41; /* Active state green */
+  }

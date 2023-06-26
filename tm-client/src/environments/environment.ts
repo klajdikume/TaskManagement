@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: 'https://localhost:8081/api/'
+  production: true,
+  apiUrl: 'http://taskmanagement-webapi:80/api/'
 };
 /*
  * For easier debugging in development mode, you can import the following file

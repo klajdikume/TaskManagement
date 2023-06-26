@@ -1,0 +1,55 @@
+.demo-table {
+    width: 50%;
+  }
+  
+  .mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+  
+  .mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+
+  .table-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .new-button {
+    margin-right: 10px;
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .new-button:hover {
+    background-color: #45a049; /* Darker green */
+  }
+  
+  .new-button:active {
+    background-color: #3e8e41; /* Active state green */
+  }
+
+  .view-button {
+    background-color: aqua;
+  }
+
+  .button-grp {
+    display: flex;
+    gap: 8px; /* Adjust the value as per your desired spacing */
+  }

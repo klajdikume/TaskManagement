@@ -15,9 +15,9 @@ namespace TM.Infrastructure
         {
         }
 
-        public DbSet<Project> Projects { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<Task> Tasks { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DbSet<User> Users { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Task> Tasks { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

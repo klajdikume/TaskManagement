@@ -22,7 +22,7 @@ namespace TM.Application.Projects.RemoveTasks
             var project = await _context
                 .Projects
                 .Include(t => t.Tasks.Where(t => t.TaskId == request.TaskId))
-                .SingleOrDefaultAsync(p => p.Id == request.ProjectId, cancellationToken);
+                .SingleOrDefaultAsync(p => p.ProjectId == request.ProjectId, cancellationToken);
 
             if (project is null)
                 return;

@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TM.Application.Data;
+using TM.Domain.Repositories;
+using TM.Infrastructure.Repositories;
 
 namespace TM.Infrastructure
 {
@@ -13,6 +15,8 @@ namespace TM.Infrastructure
             services.AddDbContext<ApplicationDbContext>(options =>
             options
                 .UseSqlServer(configuration.GetConnectionString("dbCon")));
+
+            services.AddScoped<ITaskRepository, TaskRepository>();
 
             services.AddScoped<IApplicationDbContext>(sp =>
                 sp.GetRequiredService<ApplicationDbContext>());

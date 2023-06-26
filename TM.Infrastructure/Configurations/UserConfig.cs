@@ -13,10 +13,10 @@ namespace TM.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(x => x.Id);
+            builder.HasKey(x => x.UserId);
 
             builder
-                .Property(u => u.Id)
+                .Property(u => u.UserId)
                 .HasConversion(
                     user => user.Id,
                     value => new UserId(value));

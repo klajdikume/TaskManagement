@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductModule } from './product/project.module';
+import { ProjectModule } from './project/project.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TaskModule } from './task/task.module';
 
 @NgModule({
   declarations: [
@@ -12,8 +14,10 @@ import { ProductModule } from './product/project.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ProductModule,
-    HttpClientModule
+    ProjectModule,
+    TaskModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

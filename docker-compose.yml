@@ -27,5 +27,14 @@ services:
     ports:
       - "8000:80"
 
+  taskmanagement-angular:
+      build:
+        context: .
+        dockerfile: ./tm-client/Dockerfile
+      depends_on:
+        - taskmanagement-webapi
+      ports:
+        - "8081:80"
+
 volumes:
   dbdata:

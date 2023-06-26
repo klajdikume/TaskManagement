@@ -15,11 +15,11 @@ namespace TM.Domain.Entities
         }
         public Project(ProjectId projectId)
         {
-            Id = projectId;
+            ProjectId = projectId;
         }
 
         
-        public ProjectId Id { get; set; } 
+        public ProjectId ProjectId { get; set; } 
         public string Name { get; set; }  = string.Empty;
        
         private readonly List<Task> _tasks = new();
@@ -30,7 +30,7 @@ namespace TM.Domain.Entities
         {
             var project = new Project
             {
-                Id = new ProjectId(Guid.NewGuid()),
+                ProjectId = new ProjectId(Guid.NewGuid()),
                 Name = name
             };
 
@@ -40,8 +40,8 @@ namespace TM.Domain.Entities
         public void Add(Task task)
         {
             var newTask = new Task(
-                new TaskId(Guid.NewGuid()), 
-                Id, 
+                new TaskId(Guid.NewGuid()),
+                ProjectId, 
                 new UserId(Guid.NewGuid()), 
                 task.Title, 
                 task.StartDate,

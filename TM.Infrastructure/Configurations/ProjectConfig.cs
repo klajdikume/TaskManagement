@@ -14,10 +14,10 @@ namespace TM.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<Project> builder)
         {
             builder
-                .HasKey(p => p.Id);
+                .HasKey(p => p.ProjectId);
 
             builder
-                .Property(p => p.Id)
+                .Property(p => p.ProjectId)
                 .HasConversion(
                     project => project.Id,
                     value => new ProjectId(value));
