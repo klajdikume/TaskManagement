@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using TM.Application.Projects.Validations;
+using TM.Application.Tasks.Validations;
 
 namespace TM.Application
 {
@@ -15,6 +16,7 @@ namespace TM.Application
             .AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
             services.AddValidatorsFromAssemblyContaining<CreateProjectCommandValidator>();
+            services.AddValidatorsFromAssemblyContaining<TaskDateValidatior>();
 
             return services;
         }

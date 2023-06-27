@@ -55,9 +55,24 @@ export class TaskFormComponent implements OnInit {
       description: [''],
       status: [''],
       priority: [''],
-      startDate: [''],
+      startDate: ['', Validators.required],
       dueDate: ['']
+    },{
+      validators: [this.validateDateRange('startDate', 'dueDate')]
     });
+  }
+
+  validateDateRange(startDateKey: string, dueDateKey: string) {
+    return (group: FormGroup) => {
+      const startDate = group.controls['startDate'];
+      const dueDate = group.controls['dueDate'];
+
+      if (startDate.value && dueDate.value && startDate.value > dueDate.value) {
+        dueDate.setErrors({ dateRange: true });
+      } else {
+        dueDate.setErrors(null);
+      }
+    };
   }
 
   onCancel(): void {

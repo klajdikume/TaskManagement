@@ -24,6 +24,9 @@ namespace TM.Domain.Entities
         
         public Priority Priority { get; set; }
 
+        public Project? Project { get; set; }
+        public User? User { get; set; }
+
         public Task(TaskId taskId, ProjectId projectId, UserId userId, string title, DateTime startDate, string description)
         {
             TaskId = taskId;

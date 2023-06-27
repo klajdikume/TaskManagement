@@ -21,13 +21,17 @@ namespace TM.Infrastructure.Configurations
                     task => task.Id,
                     value => new TaskId(value));
 
-            builder.HasOne<Project>()
-            .WithMany()
-            .HasForeignKey(li => li.ProjectId);
+            builder
+                .HasOne<Project>(t => t.Project)
+                .WithMany(t => t.Tasks)
+                .HasForeignKey(t => t.ProjectId)
+                .HasPrincipalKey(p => p.ProjectId);
 
-            builder.HasOne<User>()
-            .WithMany()
-            .HasForeignKey(li => li.UserId);
+            builder
+                .HasOne(t => t.User)
+                .WithMany()
+                .HasForeignKey(t => t.UserId);
+
         }
     }
 }

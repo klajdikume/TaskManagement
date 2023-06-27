@@ -21,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
    ],
   exports: [TaskListComponent]
 })

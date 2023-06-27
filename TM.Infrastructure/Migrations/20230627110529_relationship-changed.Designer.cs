@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TM.Infrastructure;
 
@@ -11,9 +12,11 @@ using TM.Infrastructure;
 namespace TM.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230627110529_relationship-changed")]
+    partial class relationshipchanged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,6 +57,9 @@ namespace TM.Infrastructure.Migrations
                     b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("ProjectId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -70,6 +76,8 @@ namespace TM.Infrastructure.Migrations
                     b.HasKey("TaskId");
 
                     b.HasIndex("ProjectId");
+
+                    b.HasIndex("ProjectId1");
 
                     b.HasIndex("UserId");
 
@@ -108,9 +116,13 @@ namespace TM.Infrastructure.Migrations
 
             modelBuilder.Entity("TM.Domain.Entities.Task", b =>
                 {
-                    b.HasOne("TM.Domain.Entities.Project", "Project")
+                    b.HasOne("TM.Domain.Entities.Project", null)
                         .WithMany("Tasks")
                         .HasForeignKey("ProjectId");
+
+                    b.HasOne("TM.Domain.Entities.Project", "Project")
+                        .WithMany()
+                        .HasForeignKey("ProjectId1");
 
                     b.HasOne("TM.Domain.Entities.User", "User")
                         .WithMany()

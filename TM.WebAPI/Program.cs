@@ -13,6 +13,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// var connectionString = builder.Configuration.GetConnectionString("dbCon");
+// builder.Services.AddDbContext<ApplicationDbContext>(x => x.UseSqlServer(connectionString));
+
+
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 

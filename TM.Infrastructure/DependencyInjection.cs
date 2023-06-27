@@ -18,8 +18,8 @@ namespace TM.Infrastructure
 
             services.AddScoped<ITaskRepository, TaskRepository>();
 
-            services.AddScoped<IApplicationDbContext>(sp =>
-                sp.GetRequiredService<ApplicationDbContext>());
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>(sp =>
+             new ApplicationDbContext());
 
             return services;
         }
