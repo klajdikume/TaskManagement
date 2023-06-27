@@ -30,7 +30,7 @@ namespace TM.Infrastructure
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TM;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=GAMMA;Database=TM;Integrated Security=true;User Id=devadmin;Password=devadmin;");
             }
         }
 
