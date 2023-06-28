@@ -33,4 +33,9 @@ export class TaskService {
     return this.http.delete(url);
   }
 
+  createTask(task: ITask) {
+    const url = `${this.apiUrl}/tasks/createTask`;
+    return this.http.patch<void>(url, { task });
+  }
+
 }

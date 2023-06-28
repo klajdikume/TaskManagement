@@ -17,7 +17,7 @@ namespace TM.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index([FromBody] CreateTaskRequest request)
+        public async Task<IActionResult> CreateTask([FromBody] CreateTaskRequest request)
         {
             var command = new CreateTaskCommand(request.Task);
 

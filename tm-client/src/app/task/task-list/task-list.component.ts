@@ -49,7 +49,7 @@ export class TaskListComponent implements OnInit {
     const dialogRef = this.dialog.open(TaskFormComponent, {
       width: '500px',
       data: {
-        task: null, // Initialize with null or default values
+        task: null, 
         projectId: null,
         assignTo: null,
         priority: null,
@@ -60,7 +60,7 @@ export class TaskListComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe((newTask: ITask | undefined) => {
       if (newTask) {
-        // Handle the newly created task
+        // this.taskService.createTask(newTask);
       }
     });
   }
