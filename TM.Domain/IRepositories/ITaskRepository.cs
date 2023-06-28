@@ -10,7 +10,8 @@ namespace TM.Domain.Repositories
 {
     public interface ITaskRepository
     {
-        Task<Domain.Entities.Task?> GetByIdAsync(TaskId id);
+        Task<Task?> GetByIdAsync(TaskId id);
+        Task<List<Task>> GetTasksWithoutProject();
         public void Update(Task task);
     }
 }
