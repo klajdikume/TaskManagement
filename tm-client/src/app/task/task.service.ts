@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ProjectDTO } from '../_models/TaskModels/ProjectDTO';
+import { ITask } from '../_models/TaskModels/Task';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,14 @@ export class TaskService {
     return this.http.get<ProjectDTO>(url);
   }
 
-  getAllTasksWithoutProject() : Observable<Task> {
+  getAllTasksWithoutProject() : Observable<ITask> {
     const url = `${this.apiUrl}/tasks`;
-    return this.http.get<Task>(url);
+    return this.http.get<ITask>(url);
+  }
+
+  updateTask(task: ITask): Observable<void> {
+    const url = `${this.apiUrl}/tasks`;
+    return this.http.patch<void>(url, { task });
   }
 
 }

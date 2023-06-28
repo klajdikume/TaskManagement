@@ -9,16 +9,16 @@ using TM.Domain.Exceptions;
 
 namespace TM.Application.Tasks.Update
 {
-    internal class UpdateTaskByIdCommandHandler : IRequestHandler<UpdateTaskByIdCommand>
+    internal class UpdateTaskCommandHandler : IRequestHandler<UpdateTaskCommand>
     {
         private readonly IApplicationDbContext _dbContext;
 
-        public UpdateTaskByIdCommandHandler(IApplicationDbContext dbContext)
+        public UpdateTaskCommandHandler(IApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task Handle(UpdateTaskByIdCommand request, CancellationToken cancellationToken)
+        public async Task Handle(UpdateTaskCommand request, CancellationToken cancellationToken)
         {
             var task = await _dbContext.Tasks.FindAsync(request.Task.TaskId);
 

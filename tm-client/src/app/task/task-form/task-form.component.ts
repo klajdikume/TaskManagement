@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Status, Priority } from '../../_models/TaskModels/Task';
+import { Status, Priority, ITask } from '../../_models/TaskModels/Task';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-task-form',
@@ -10,7 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class TaskFormComponent implements OnInit {
   taskForm!: FormGroup;
-
+  task!: ITask;
+  
   statusOptions: { value: number, label: string }[] = [
     { value: Status.Todo, label: 'Todo' },
     { value: Status.InProgress, label: 'In Progress' },
@@ -40,7 +42,8 @@ export class TaskFormComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<TaskFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public taskService: TaskService
   ) { }
 
    ngOnInit(): void {
@@ -76,6 +79,28 @@ export class TaskFormComponent implements OnInit {
         dueDate.setErrors(null);
       }
     };
+  }
+
+  updateTask(): void {
+    if (this.taskForm.invalid) {
+      return;
+    }
+
+    this.task.title = this.taskForm.value.title;
+    this.task.description = this.taskForm.value.description;
+    this.task.userId = this.taskForm.value.userId;
+    this.task.projectId = this.taskForm.value.projectId;
+    this.task.priority = this.taskForm.value.priority;
+    this.task.status = this.taskForm.value.status;
+    this.task.startDate = this.taskForm.value.startDate;
+    this.task.dueDate = this.taskForm.value.dueDate;
+
+    this.taskService.updateTask(this.task).subscribe(() => {
+      
+      this.dialogRef.close();
+    }, (error) => {
+      
+    });
   }
 
   onCancel(): void {

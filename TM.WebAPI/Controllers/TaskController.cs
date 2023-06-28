@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TM.Application.Tasks.Create;
 using TM.Application.Tasks.Get;
+using TM.Application.Tasks.Update;
 using TM.Domain.Entities;
 
 namespace TM.WebAPI.Controllers
@@ -30,6 +31,24 @@ namespace TM.WebAPI.Controllers
             return Ok(await _mediator.Send(command));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> getAllTasksWithoutProject([FromQuery] ProjectId projectId)
+        {
+            var command = new GetTasksByProjectIdCommand(projectId);
+
+            return Ok(await _mediator.Send(command));
+        }
+
+        
+        [HttpPatch]
+        public async Task<IActionResult> UpdateTask([FromBody] UpdateTaskRequest request)
+        {
+            var command = new UpdateTaskCommand(request.Task);
+
+            await _mediator.Send(command);
+
+            return Ok();
+        }
 
     }
 }

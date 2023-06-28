@@ -9,5 +9,6 @@ using Task = TM.Domain.Entities.Task;
 
 namespace TM.Application.Tasks.Update
 {
-    public record UpdateTaskByIdCommand(Task Task) : IRequest;
+    public record UpdateTaskCommand(Task Task) : IRequest;
+    public record UpdateTaskRequest(Task Task);
 }
