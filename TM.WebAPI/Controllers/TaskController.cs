@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TM.Application.Tasks.Create;
+using TM.Application.Tasks.Get;
+using TM.Domain.Entities;
 
 namespace TM.WebAPI.Controllers
 {
@@ -20,6 +22,14 @@ namespace TM.WebAPI.Controllers
             return Ok(await _mediator.Send(command));
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> getTasksByProjectId([FromQuery] ProjectId projectId)
+        {
+            var command = new GetTasksByProjectIdCommand(projectId);
+
+            return Ok(await _mediator.Send(command));
+        }
+
+
     }
 }

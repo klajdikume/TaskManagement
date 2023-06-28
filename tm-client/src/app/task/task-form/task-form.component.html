@@ -1,14 +1,14 @@
-<h2 mat-dialog-title>Create New Task</h2>
+<h2 mat-dialog-title>{{ data ? 'Edit Task' : 'Create New Task' }}</h2>
 <div mat-dialog-content>
   <form [formGroup]="taskForm" >
    <div class="form">
     <mat-form-field>
-        <input matInput placeholder="Title" formControlName="title">
+        <input matInput placeholder="Title" formControlName="title" [value]="data?.title">
         <mat-error *ngIf="taskForm.controls.title.hasError('required')">Title is required</mat-error>
       </mat-form-field>
       
       <mat-form-field>
-        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        <textarea matInput placeholder="Description" formControlName="description">{{ data?.description }}</textarea>
         <mat-error *ngIf="taskForm.controls.description.hasError('required')">Description is required</mat-error>
       </mat-form-field>
     <mat-form-field>
@@ -42,7 +42,7 @@
     
     <mat-form-field>
       <mat-label>Start Date</mat-label>
-      <input matInput [matDatepicker]="startDatePicker" formControlName="startDate">
+      <input matInput [matDatepicker]="startDatePicker" formControlName="startDate" value="">
       <mat-error *ngIf="taskForm.controls.startDate.errors?.required">Start date is required</mat-error>
       <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
       <mat-datepicker #startDatePicker></mat-datepicker>

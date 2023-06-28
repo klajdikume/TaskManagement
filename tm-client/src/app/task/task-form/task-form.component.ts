@@ -49,15 +49,18 @@ export class TaskFormComponent implements OnInit {
   }
 
   initializeForm(): void {
+    const task = this.data; 
+
+    console.log(task);
+
     this.taskForm = this.formBuilder.group({
-      // Define your form controls here
-      title: ['', Validators.required],
-      description: [''],
-      status: [''],
-      priority: [''],
-      startDate: ['', Validators.required],
-      dueDate: ['']
-    },{
+      title: [task?.title || '', Validators.required],
+      description: [task?.description || ''],
+      status: [task?.status || ''],
+      priority: [task?.priority || ''],
+      startDate: [task?.startDate || '', Validators.required],
+      dueDate: [task?.dueDate || '']
+    }, {
       validators: [this.validateDateRange('startDate', 'dueDate')]
     });
   }
