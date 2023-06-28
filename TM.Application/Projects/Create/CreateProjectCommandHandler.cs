@@ -32,7 +32,7 @@ namespace TM.Application.Projects.Create
                 throw new ValidationException(validationResult.Errors);
             }
 
-            Project.Create(request.name);
+            _context.Projects.Add(Project.Create(request.name));
 
             await _context.SaveChangesAsync(cancellationToken);
         }
