@@ -53,3 +53,17 @@
     display: flex;
     gap: 8px; /* Adjust the value as per your desired spacing */
   }
+  
+  .edit-button {
+    background-color: dodgerblue;
+    color: white;
+    border: 0.5px;
+    border-radius: 20%;
+  }
+
+  .eye-button{
+    background-color: rgb(108 196 86);
+    color: white;
+    border: 0.5px;
+    border-radius: 20%;
+  }

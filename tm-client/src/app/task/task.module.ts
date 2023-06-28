@@ -11,9 +11,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @NgModule({
-  declarations: [TaskListComponent, TaskFormComponent],
+  declarations: [TaskListComponent, TaskFormComponent, DeleteConfirmationComponent],
   imports: [
     CommonModule,
     RouterModule,

@@ -14,18 +14,23 @@ export class TaskService {
   constructor(private http: HttpClient) { }
 
   getTasksByProjectId(projectId: number): Observable<ProjectDTO> {
-    const url = `${this.apiUrl}/tasks/${projectId}`;
+    const url = `${this.apiUrl}/tasks/getTasksByProjectId?taskId=${projectId}`;
     return this.http.get<ProjectDTO>(url);
   }
 
   getAllTasksWithoutProject() : Observable<ITask> {
-    const url = `${this.apiUrl}/tasks`;
+    const url = `${this.apiUrl}/tasks/getAllTasksWithoutProject`;
     return this.http.get<ITask>(url);
   }
 
   updateTask(task: ITask): Observable<void> {
-    const url = `${this.apiUrl}/tasks`;
+    const url = `${this.apiUrl}/tasks/updateTask`;
     return this.http.patch<void>(url, { task });
+  }
+
+  deleteTaskById(taskId: string) {
+    const url = `${this.apiUrl}/tasks/deleteTaskById?taskId=${taskId}`;
+    return this.http.delete(url);
   }
 
 }

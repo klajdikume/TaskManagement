@@ -13,10 +13,10 @@ export class ProjectServiceService {
   constructor(private http: HttpClient) { }
 
   public getProjects(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/projects`);
+    return this.http.get<any>(`${this.apiUrl}/projects/getProjects`);
   }
 
   createProject(project: IProject): Observable<IProject> {
-    return this.http.post<IProject>(`${this.apiUrl}/projects`, project);
+    return this.http.post<IProject>(`${this.apiUrl}/projects/createProject`, project);
   }
 }

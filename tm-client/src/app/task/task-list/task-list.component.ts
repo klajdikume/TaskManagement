@@ -5,6 +5,7 @@ import { TaskService } from '../task.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskFormComponent } from '../task-form/task-form.component';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-task-list',
@@ -179,4 +180,25 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  deleteTaskById(taskId: any): void {
+
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+      width: '300px',
+      data: 'Are you sure you want to delete this task?'
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+        if (result) {
+          this.taskService.deleteTaskById(taskId).subscribe(() => {
+            console.log('Task deleted successfully.');
+            // pretty notification card maybe
+
+          }, (error) => {
+            console.error('Error deleting task:', error);
+            
+          });
+        }
+    });
+    
+  }
 }

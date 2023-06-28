@@ -18,10 +18,10 @@
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
             <div class="button-grp">
-                <button mat-icon-button (click)="viewProjectTasks(element)">
+                <button mat-icon-button (click)="viewProjectTasks(element)" class="eye-button">
                     <mat-icon>visibility</mat-icon>
                   </button>
-                  <button mat-icon-button (click)="editProject(element)">
+                  <button mat-icon-button (click)="editProject(element)" class="edit-button">
                     <mat-icon>edit</mat-icon>
                   </button>
             </div>

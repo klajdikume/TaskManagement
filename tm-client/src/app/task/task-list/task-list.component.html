@@ -31,9 +31,14 @@
           <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let task">
-              <button mat-icon-button (click)="editTask(task)">
-                <mat-icon>edit</mat-icon>
-              </button>
+              <div class="btn-group">
+                <button mat-icon-button (click)="editTask(task)" class="edit-button">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" class="delete-button" (click)="deleteTaskById(task.taskId)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
             </td>
           </ng-container>
       

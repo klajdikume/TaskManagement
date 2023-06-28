@@ -40,3 +40,22 @@
   .new-button:active {
     background-color: #3e8e41; /* Active state green */
   }
+
+  .edit-button {
+    background-color: dodgerblue;
+    color: white;
+    border: 0.5px;
+    border-radius: 20%;
+  }
+
+  .delete-button{
+    background-color: rgb(228, 67, 23);
+    color: white;
+    border: 0.5px;
+    border-radius: 20%;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-evenly;
+}
