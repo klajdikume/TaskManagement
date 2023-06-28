@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TM.Application.Projects.ProjectDtos;
 using TM.Domain.Entities;
 
-namespace TM.Application.Projects.Get
+namespace TM.Application.Tasks.Delete
 {
-    public record GetProjectsCommand : IRequest<List<ProjectToReturn>>;
+    public record DeleteTaskCommand(TaskId TaskId) : IRequest;
 }

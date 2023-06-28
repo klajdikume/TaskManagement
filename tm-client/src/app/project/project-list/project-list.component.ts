@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ProjectListComponent implements OnInit {
   projects: any;
-  PROJECTS: IProject[] = [
+  public PROJECTS: IProject[] = [
     { Id: 1, name: 'Project A', numberOfTasks: 5 },
     { Id: 2, name: 'Project B', numberOfTasks: 10 },
     { Id: 3, name: 'Project C', numberOfTasks: 3 },
@@ -26,7 +26,7 @@ export class ProjectListComponent implements OnInit {
   constructor(private projectService: ProjectServiceService, private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
-    
+    this.projects = this.PROJECTS;
   }
 
   createProject(): void {
@@ -37,6 +37,11 @@ export class ProjectListComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe((result: IProject) => {
       if (result) {
+        console.log(result);
+        result.numberOfTasks = 0;
+        result.Id = 4;
+        this.PROJECTS.push(result);
+        this.projects = this.PROJECTS;
         /*
          this.projectService.createProject(result).subscribe(
           (response) => {

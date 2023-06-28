@@ -67,6 +67,19 @@ namespace TM.Domain.Entities
             return taskCreated;
         }
 
+        public void updateTask(Task task)
+        {
+            
+            ProjectId = task.ProjectId;
+            Title = task.Title;
+            Description = task.Description;
+            Status = task.Status;
+            UserId = task.UserId;
+            StartDate = task.StartDate;
+            DueDate = task.DueDate;
+            Priority = task.Priority;
+        }
+
         public void AssignToUser(UserId userId)
         {
             UserId = userId;

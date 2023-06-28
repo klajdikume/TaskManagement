@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TM.Application.Projects.ProjectDtos;
+using TM.Application.Tasks.TaskDtos;
 using TM.Domain.Entities;
 
-namespace TM.Application.Projects.Get
+namespace TM.Application.Tasks.Get
 {
-    public record GetProjectsCommand : IRequest<List<ProjectToReturn>>;
+    public record GetTasksByProjectIdCommand(ProjectId ProjectId) : IRequest<ProjectDTO>;
 }

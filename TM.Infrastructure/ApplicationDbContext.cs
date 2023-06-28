@@ -30,7 +30,7 @@ namespace TM.Infrastructure
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=GAMMA;Database=TM;Integrated Security=true;User Id=devadmin;Password=devadmin;");
+                optionsBuilder.UseSqlServer("Server=GAMMA;Database=TM;Integrated Security=true;User Id=devadmin;Password=devadmin;TrustServerCertificate=true");
             }
         }
 
